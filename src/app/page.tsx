@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'GenLayer Community Hub',
@@ -27,7 +27,7 @@ export default function Home() {
         <p className="text-sm opacity-75">
           Official: <a href="https://genlayer.com" className="underline hover:text-[#F0F1E9]">genlayer.com</a>
         </p>
-      </section>
+      </section> 
       
       {/* CARDS */}
       <section className="py-20 px-8 bg-gradient-to-b from-[#0A0A0A] to-[#0C0B58]">
