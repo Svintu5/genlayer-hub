@@ -73,16 +73,16 @@ const fonts: FontsConfig = {
 
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
-  theme: "system", // dark | light | system
-  neutral: "gray", // sand | gray | slate | custom
-  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  solid: "contrast", // color | contrast
-  solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative
-  surface: "translucent", // filled | translucent
-  transition: "all", // all | micro | macro
-  scaling: "100", // 90 | 95 | 100 | 105 | 110
+  theme: "dark",     // вместо system, чтобы сразу тёмный
+  neutral: "slate",  // вместо gray — более “navy”
+  brand: "violet",   // вместо cyan
+  accent: "pink",    // вместо red
+  solid: "contrast",
+  solidStyle: "flat",
+  border: "playful",
+  surface: "translucent",
+  transition: "all",
+  scaling: "100",
 };
 
 const dataStyle: DataStyleConfig = {
@@ -107,15 +107,16 @@ const effects: EffectsConfig = {
     radius: 100,
   },
   gradient: {
-    display: false,
-    opacity: 100,
+    display: true,      // было false — включаем
+    opacity: 90,        // можно 80–100
     x: 50,
     y: 60,
-    width: 100,
-    height: 50,
+    width: 120,
+    height: 60,
     tilt: 0,
-    colorStart: "accent-background-strong",
-    colorEnd: "page-background",
+    // фирменный градиент GenLayer
+    colorStart: "#9B6AF6", // фиолетовый
+    colorEnd: "#110FFF",   // синий
   },
   dots: {
     display: true,
