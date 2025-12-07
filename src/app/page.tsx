@@ -1,130 +1,55 @@
-import {
-  Heading,
-  Text,
-  Button,
-  Avatar,
-  RevealFx,
-  Column,
-  Badge,
-  Row,
-  Schema,
-  Meta,
-  Line,
-} from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
-import { Mailchimp } from "@/components";
-import { Projects } from "@/components/work/Projects";
-import { Posts } from "@/components/blog/Posts";
+import { Metadata } from 'next'
 
-export async function generateMetadata() {
-  return Meta.generate({
-    title: home.title,
-    description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: home.image,
-  });
+export const metadata: Metadata = {
+  title: 'GenLayer Community Hub',
+  description: 'Games • Tools • Memes • Guides for GenLayer community',
 }
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        path={home.path}
-        title={home.title}
-        description={home.description}
-        image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
-      />
-      <Column fillWidth horizontal="center" gap="m">
-        <Column maxWidth="s" horizontal="center" align="center">
-          {home.featured.display && (
-            <RevealFx
-              fillWidth
-              horizontal="center"
-              paddingTop="16"
-              paddingBottom="32"
-              paddingLeft="12"
-            >
-              <Badge
-                background="brand-alpha-weak"
-                paddingX="12"
-                paddingY="4"
-                onBackground="neutral-strong"
-                textVariant="label-default-s"
-                arrow={false}
-                href={home.featured.href}
-              >
-                <Row paddingY="2">{home.featured.title}</Row>
-              </Badge>
-            </RevealFx>
-          )}
-          <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
-            <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
-            </Heading>
-          </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="32">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
-            </Text>
-          </RevealFx>
-          <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
-            <Button
-              id="about"
-              data-border="rounded"
-              href={about.path}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Row gap="8" vertical="center" paddingRight="4">
-                {about.avatar.display && (
-                  <Avatar
-                    marginRight="8"
-                    style={{ marginLeft: "-0.75rem" }}
-                    src={person.avatar}
-                    size="m"
-                  />
-                )}
-                {about.title}
-              </Row>
-            </Button>
-          </RevealFx>
-        </Column>
-      </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
-      {routes["/blog"] && (
-        <Column fillWidth gap="24" marginBottom="l">
-          <Row fillWidth paddingRight="64">
-            <Line maxWidth={48} />
-          </Row>
-          <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
-            <Row flex={1} paddingLeft="l" paddingTop="24">
-              <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                Latest from the blog
-              </Heading>
-            </Row>
-            <Row flex={3} paddingX="20">
-              <Posts range={[1, 2]} columns="2" />
-            </Row>
-          </Row>
-          <Row fillWidth paddingLeft="64" horizontal="end">
-            <Line maxWidth={48} />
-          </Row>
-        </Column>
-      )}
-      <Projects range={[2]} />
-      <Mailchimp />
-    </Column>
-  );
+    <main className="min-h-screen">
+      {/* GENLAYER HERO */}
+      <section className="bg-gradient-to-r from-[#0C0B58] to-[#FF78E2] min-h-screen flex flex-col justify-center p-8 text-center text-white">
+        <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white to-[#F0F1E9] bg-clip-text text-transparent drop-shadow-2xl">
+          GenLayer Community Hub
+        </h1>
+        <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
+          🚀 Games • Tools • Memes • Guides
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <a href="/games" className="bg-white text-[#0C0B58] px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-2xl">
+            Play Games
+          </a>
+          <span className="text-lg bg-black/30 px-6 py-3 rounded-full border border-white/20 backdrop-blur-sm">
+            Fan-made • Not affiliated with GenLayer Labs
+          </span>
+        </div>
+        <p className="text-sm opacity-75">
+          Official: <a href="https://genlayer.com" className="underline hover:text-[#F0F1E9]">genlayer.com</a>
+        </p>
+      </section>
+      
+      {/* CARDS */}
+      <section className="py-20 px-8 bg-gradient-to-b from-[#0A0A0A] to-[#0C0B58]">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">Coming Soon</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all group cursor-pointer">
+            <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#FF78E2]">🎮 Arkanoid</h3>
+            <p className="text-[#F0F1E9] mb-4">Your Canvas game with GenLayer theme</p>
+            <span className="text-sm bg-[#4E11CC]/20 px-4 py-2 rounded-full">Canvas + Web3</span>
+          </div>
+          <div className="p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all group cursor-pointer">
+            <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#FF78E2]">⚡ Web3 Tools</h3>
+            <p className="text-[#F0F1E9] mb-4">Python scripts + testnet faucets</p>
+            <span className="text-sm bg-[#4E11CC]/20 px-4 py-2 rounded-full">Web3.py</span>
+          </div>
+          <div className="p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all group cursor-pointer">
+            <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#FF78E2]">😂 Memes</h3>
+            <p className="text-[#F0F1E9] mb-4">GenLayer meme gallery</p>
+            <span className="text-sm bg-[#4E11CC]/20 px-4 py-2 rounded-full">IPFS Gallery</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
 }
